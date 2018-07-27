@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EXPQ_OB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="omsEXPQ.xsd">
+  <ZGLV>
+    <VERSION>VERSION</VERSION>
+    <DATA>2001-01-01</DATA>
+    <FILENAME>FILENAME</FILENAME>
+    <FIRSTNAME>FIRSTNAME</FIRSTNAME>
+  </ZGLV>
+  <SVD>
+    <CODE>0</CODE>
+    <YEAR>0</YEAR>
+    <MONTH>0</MONTH>
+  </SVD>
+  <RECORDS>
+    <REC>
+      <TYPE>0</TYPE>
+      <TYPE_CARE>0</TYPE_CARE>
+      <AGE>0</AGE>
+      <DS>DS</DS>
+      <IND>IND</IND>
+      <CNT>0</CNT>
+    </REC>
+  </RECORDS>
+</EXPQ_OB>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="types.xsd"/>
+    <xs:element name="MR_OB">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ZGLV">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="VERSION" type="string5" minOccurs="1"/>
+                            <xs:element name="DATA" type="DateShort" minOccurs="1"/>
+                            <xs:element name="FILENAME" type="string26" minOccurs="1"/>
+                            <xs:element name="FIRSTNAME" type="string26" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="SVD">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="CODE" type="positive-integer-8" minOccurs="1"/>
+                            <xs:element name="YEAR" type="positive-integer-4" minOccurs="1"/>
+                            <xs:element name="MONTH" type="positive-integer-2" minOccurs="1"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="RECORDS">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" maxOccurs="unbounded" name="REC">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="TYPE" type="positive-integer-1" minOccurs="1"/>
+                                        <xs:element name="AGE" type="positive-integer-1" minOccurs="1"/>
+                                        <xs:element name="DS" type="string10" minOccurs="1"/>
+                                        <xs:element name="IND" type="string10" minOccurs="1"/>
+                                        <xs:element name="CNT" type="positive-integer-9" minOccurs="1"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

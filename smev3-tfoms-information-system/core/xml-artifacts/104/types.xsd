@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:simpleType name="empty-string">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value=""/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="date-1850-3999">
+        <xs:restriction base="xs:date">
+            <xs:minInclusive value="1850-01-01"/>
+            <xs:maxInclusive value="3999-12-31"/>
+            <xs:pattern value=".{10}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="date-or-nothing">
+        <xs:union memberTypes="date-1850-3999 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ksg-num-or-nothing">
+        <xs:annotation>
+            <xs:documentation>
+                Допустимые символы: цифры от 0 до 9 и разделитель "." (точка)
+            </xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="KsgNumType empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="decimal-1-2">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="decimal-1-3">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="3"/>
+            <xs:totalDigits value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="decimal-2-5">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="5"/>
+            <xs:totalDigits value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="decimal-2-4">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="4"/>
+            <xs:totalDigits value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="decimal-6-2">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="decimal-15-2">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+            <xs:totalDigits value="17"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="double-or-nothing">
+        <xs:union memberTypes="xs:double empty-string"/>
+    </xs:simpleType>
+    <xs:simpleType name="decimal-15-2-or-nothing">
+        <xs:union memberTypes="decimal-15-2 empty-string"/>
+    </xs:simpleType>
+    <xs:simpleType name="integer-or-nothing">
+        <xs:union memberTypes="xs:integer empty-string"/>
+    </xs:simpleType>
+    <xs:simpleType name="positive-integer-1-or-nothing">
+        <xs:union memberTypes="positive-integer-1 empty-string"/>
+    </xs:simpleType>
+    <xs:simpleType name="positive-integer-2-or-nothing">
+        <xs:union memberTypes="positive-integer-2 empty-string"/>
+    </xs:simpleType>
+    <xs:simpleType name="positive-integer-3-or-nothing">
+        <xs:union memberTypes="positive-integer-3 empty-string"/>
+    </xs:simpleType>
+    <xs:simpleType name="positive-integer-4-or-nothing">
+        <xs:union memberTypes="positive-integer-4 empty-string"/>
+    </xs:simpleType>
+    <xs:simpleType name="positive-integer-8-or-nothing">
+        <xs:union memberTypes="positive-integer-8 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-11">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99999999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-9">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="999999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-8">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-7">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="positive-integer-6">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-5">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-4">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-3">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="999"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-2">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="positive-integer-1">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="boolean">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="long-or-nothing">
+        <xs:union memberTypes="xs:long empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-or-nothing">
+        <xs:union memberTypes="xs:string empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-5-or-nothing">
+        <xs:union memberTypes="string5 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-6-or-nothing">
+        <xs:union memberTypes="string6 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-9-or-nothing">
+        <xs:union memberTypes="string9 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-10-or-nothing">
+        <xs:union memberTypes="string10 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-12-or-nothing">
+        <xs:union memberTypes="string12 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-20-or-nothing">
+        <xs:union memberTypes="string20 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-26-or-nothing">
+        <xs:union memberTypes="string26 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-30-or-nothing">
+        <xs:union memberTypes="string30 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string-250-or-nothing">
+        <xs:union memberTypes="string250 empty-string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="string3">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string4">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string5">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string6">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string9">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string10">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string11">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="11"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string12">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="12"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string16">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string20">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="KsgNumType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0123456789DIALdial.]+"/><!--Специально перечислил все цифры и буквы, чтобы в сообщении об ошбке было понятнее, какие символы допустимы-->
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="KsgNumOrEmpty">
+        <xs:simpleContent>
+            <xs:extension base="ksg-num-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:simpleType name="string26">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="26"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string30">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string250">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="250"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="string1000">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- YYYY-MM-DD -->
+    <xs:simpleType name="DateShort">
+        <xs:restriction base="date-1850-3999"/>
+    </xs:simpleType>
+
+    <xs:complexType name="DateOrEmpty">
+        <xs:simpleContent>
+            <xs:extension base="date-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="DoubleOrEmpty">
+        <xs:simpleContent>
+            <xs:extension base="double-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="DecimalOrEmpty15_2">
+        <xs:simpleContent>
+            <xs:extension base="decimal-15-2-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="IntegerOrEmpty">
+        <xs:simpleContent>
+            <xs:extension base="integer-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="PositiveIntegerOrEmpty1">
+        <xs:simpleContent>
+            <xs:extension base="positive-integer-1-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="PositiveIntegerOrEmpty2">
+        <xs:simpleContent>
+            <xs:extension base="positive-integer-2-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="PositiveIntegerOrEmpty4">
+        <xs:simpleContent>
+            <xs:extension base="positive-integer-4-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="PositiveIntegerOrEmpty8">
+        <xs:simpleContent>
+            <xs:extension base="positive-integer-8-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="LongOrEmpty">
+        <xs:simpleContent>
+            <xs:extension base="long-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="StringOrEmpty">
+        <xs:simpleContent>
+            <xs:extension base="string-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="StringOrEmpty5">
+        <xs:simpleContent>
+            <xs:extension base="string-5-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="StringOrEmpty6">
+        <xs:simpleContent>
+            <xs:extension base="string-6-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="StringOrEmpty9">
+        <xs:simpleContent>
+            <xs:extension base="string-9-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="StringOrEmpty12">
+        <xs:simpleContent>
+            <xs:extension base="string-12-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="StringOrEmpty26">
+        <xs:simpleContent>
+            <xs:extension base="string-26-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="StringOrEmpty30">
+        <xs:simpleContent>
+            <xs:extension base="string-30-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="StringOrEmpty250">
+        <xs:simpleContent>
+            <xs:extension base="string-250-or-nothing">
+                <xs:attribute type="xs:string"
+                              name="reference"
+                              use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+</xs:schema>

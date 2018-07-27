@@ -1,0 +1,235 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.tfoms</groupId>
+    <artifactId>smev3-tfoms-information-system</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>core</artifactId>
+  
+  
+  <!-- <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties> -->
+
+  <dependencies>
+  
+  <dependency>
+  	<groupId>com.tfoms</groupId>
+  	<artifactId>api-information-system</artifactId>
+  	<version>1.0.0</version>
+  </dependency>
+  
+    <dependency>
+                <groupId>org.apache.tika</groupId>
+                <artifactId>tika-core</artifactId>
+                <version>1.5</version>
+    </dependency>
+    
+    
+    
+    <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>javax.persistence</artifactId>
+        <version>2.1.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>org.eclipse.persistence.jpa</artifactId>
+        <version>2.5.0</version>
+    </dependency>
+
+    <dependency>
+    	<groupId>com.tfoms</groupId>
+    	<artifactId>factory-information-system</artifactId>
+    	<version>1.0.0</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>com.tfoms</groupId>
+    	<artifactId>Indentity</artifactId>
+    	<version>1.0.0</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>com.oracle</groupId>
+    	<artifactId>ojdbc6</artifactId>
+    	<version>11.2.0.3</version>
+	</dependency>
+    
+  </dependencies>
+  
+  <build>
+        <plugins>
+        <!--     <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>1.8</version>
+            <executions>
+            <execution>
+            <phase>generate-sources</phase>
+            <goals>
+            <goal>add-source</goal>
+            </goals>
+            <configuration>
+            <sources>
+            <source>${project.build.directory}/generated-sources/wsimport</source>
+            <source>${project.build.directory}/generated-sources/jaxb-import</source>
+            </sources>
+            </configuration>
+            </execution>
+            </executions>
+            </plugin>
+            <plugin>
+            <groupId>org.jvnet.jax-ws-commons</groupId>
+            <artifactId>jaxws-maven-plugin</artifactId>
+            <version>2.2</version>
+            <executions>
+            <execution>
+            <goals>
+            <goal>wsimport</goal>
+            </goals>
+            <configuration>
+            <wsdlDirectory>${project.basedir}/xml-artifacts/transport-service/1.1</wsdlDirectory>
+            </configuration>
+            <id>wsimport-generate-service</id>
+            <phase>generate-sources</phase>
+            </execution>
+            </executions>
+            <configuration>
+            <verbose>true</verbose>
+            <extension>true</extension>
+            <target>2.0</target>
+            </configuration>
+            </plugin>
+            <plugin>
+            <groupId>org.jvnet.jaxb2.maven2</groupId>
+            <artifactId>maven-jaxb2-plugin</artifactId>
+            <version>0.9.0</version>
+            <configuration>
+            <schemaDirectory>${project.basedir}/xml-artifacts</schemaDirectory>
+            <schemaIncludes>
+            <include>smev-business-process-metadata-1.0.xsd</include>
+            </schemaIncludes>
+            <generateDirectory>${project.build.directory}/generated-sources/jaxb-import</generateDirectory>
+            </configuration>
+            <executions>
+            <execution>
+            <goals>
+            <goal>generate</goal>
+            </goals>
+            </execution>
+            </executions>
+            </plugin> -->
+            
+             <!-- <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.build.directory}/generated-sources/jaxb-import</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin> --> 
+            
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.9.0</version>
+                <configuration>
+                    <schemaDirectory>${project.basedir}/xml-artifacts/adapter</schemaDirectory>
+                    <schemaIncludes>
+                        <include>smev-sevice-adapter-types.xsd</include>
+                        <include>smev-sevice-adapter-faults.xsd</include>
+                    </schemaIncludes>
+                    <generateDirectory>${project.build.directory}/generated-sources/jaxb-import</generateDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> 
+            
+         <plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <executions>
+      <execution>
+        <phase>package</phase>
+        <goals>
+          <goal>attached</goal>
+        </goals>
+      </execution>
+    </executions>
+    <configuration>
+    <archive>
+            <manifest>
+              <mainClass>com.tfoms.smev3.App_dev_v2</mainClass>
+            </manifest>
+          </archive>
+      <descriptorRefs>
+        <descriptorRef>jar-with-dependencies</descriptorRef>
+      </descriptorRefs>
+    </configuration>
+  </plugin>
+  
+  
+  
+  <!-- <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>write-project-properties</goal>
+            </goals>
+            <configuration>
+              <outputFile>
+                src/main/resources/config.properties
+              </outputFile>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin> -->
+  
+          
+  
+        </plugins>
+        
+       <resources>
+        <resource>
+            <directory>src/main/java</directory>
+            <filtering>false</filtering>
+        </resource>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>false</filtering>
+        </resource>
+    </resources>
+    
+        
+        
+    </build>
+    
+    <repositories>
+	    <repository>
+	      <id>codelds</id>
+	      <url>https://code.lds.org/nexus/content/groups/main-repo</url>
+	    </repository>
+  	</repositories>
+    
+    
+</project>

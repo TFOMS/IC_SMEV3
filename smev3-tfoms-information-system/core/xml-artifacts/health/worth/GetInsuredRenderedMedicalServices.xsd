@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://ffoms.ru/GetInsuredRenderedMedicalServices/1.0.0"
+           xmlns:q1="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+           targetNamespace="http://ffoms.ru/GetInsuredRenderedMedicalServices/1.0.0" elementFormDefault="qualified"
+           attributeFormDefault="unqualified" version="1.0">
+    <xs:import namespace="urn://x-artefacts-smev-gov-ru/supplementary/commons/1.2"
+               schemaLocation="smev-supplementary-commons-1.2.xsd"/>
+    <xs:element name="InputData" type="ns1:InputDataType">
+        <xs:annotation>
+            <xs:documentation>Входные данные</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="OutputData" type="ns1:OutputDataType">
+        <xs:annotation>
+            <xs:documentation>Выходные данные</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="InputDataType">
+        <xs:sequence>
+            <xs:element name="InsuredRenderingListRequest" type="ns1:InsuredRenderingListRequestType">
+                <xs:annotation>
+                    <xs:documentation>Запрос на получение сведений об оказанных медицинских услугах и их стоимости</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InsuredRenderingListRequestType">
+        <xs:sequence>
+            <xs:element name="RegionCode" type="ns1:digits-5">
+                <xs:annotation>
+                    <xs:documentation>Пятизначный код ОКАТО субъекта Российской Федерации</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:group ref="q1:PhysicalPersonQualifiedName-ModelGroup">
+                <xs:annotation>
+                    <xs:documentation>ФИО физического лица</xs:documentation>
+                </xs:annotation>
+            </xs:group>
+            <xs:element name="BirthDate" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата рождения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="UnitedPolicyNumber" type="ns1:digits-16">
+                <xs:annotation>
+                    <xs:documentation>Единый номер полиса ОМС (ЕНП)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DateFrom" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата начала периода, за который запрашиваются сведения об оказанных медицинских услугах</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DateTo" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата окончания периода, за который запрашиваются сведения об оказанных медицинских услугах</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OutputDataType">
+        <xs:sequence>
+            <xs:element name="InsuredRenderingList" type="ns1:InsuredRenderingListType">
+                <xs:annotation>
+                    <xs:documentation>Cведения об оказанных медицинских услугах и их стоимости</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InsuredRenderingListType">
+        <xs:annotation>
+            <xs:documentation>Cведения об оказанных медицинских услугах и их стоимости</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="InsuredRenderingInfo" type="ns1:InsuredRenderingInfoType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Cведения об оказанной медицинской услуге и её стоимости</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InsuredRenderingInfoType">
+        <xs:annotation>
+            <xs:documentation>Cведения об оказанной медицинской услуге и её стоимости</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="DateRenderingFrom" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Дата начала оказания медицинской услуги</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DateRenderingTo" type="xs:date" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Дата окончания оказания медицинской услуги</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CareRegimen" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Условие оказания медицинской помощи</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="CareType" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Виды медицинской помощи</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Наименование медицинской услуги</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MedServicesSum" type="xs:decimal">
+                <xs:annotation>
+                    <xs:documentation>Стоимость (руб.)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ClinicName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Наименование медицинской организации - юридического лица</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="RegionName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Название субъекта Российской Федерации, в котором оказана медицинская услуга</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="digits-16">
+        <xs:annotation>
+            <xs:documentation>Строка из 16 цифр</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[\d]{16}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="digits-5">
+        <xs:annotation>
+            <xs:documentation>Строка из 5 цифр</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[\d]{5}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

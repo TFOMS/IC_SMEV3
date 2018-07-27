@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:FATALRequest xmlns:fns="urn://x-artefacts-zags-fatal/types/4.0.2" xmlns:tns="urn://x-artefacts-zags-fatal/root/112-04/4.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn://x-artefacts-zags-fatal/root/112-04/4.0.2 zags-fatal-ru-root.xsd " ДатаСвед="2001-01-01" ИдСвед="">
+  <tns:СведРегСмерт ДатаЗапис="2001-01-01" НомерЗапис="">
+    <tns:ОрганЗАГС КодЗАГС="" НаимЗАГС=""/>
+    <tns:СтатусЗаписи ДатаНачСтатус="2001-01-01" КодСтатус="01" НаимСтатус=""/>
+    <tns:ПрдСведРег>
+      <tns:СведУмер>
+        <tns:ФИОУмер Имя="" Фамилия=""/>
+        <tns:ДатаСмерт>2001-01-01</tns:ДатаСмерт>
+        <tns:МестоСмерт МестоТекст=""/>
+      </tns:СведУмер>
+    </tns:ПрдСведРег>
+  </tns:СведРегСмерт>
+</tns:FATALRequest>
